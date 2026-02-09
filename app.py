@@ -7,20 +7,35 @@ st.set_page_config(page_title="Gestão DTI-PF", page_icon="🛡️", layout="wid
 
 st.markdown("""
     <style>
+    /* 1. Botão Validar: Amarelo com borda preta */
     div.stButton > button:first-child {
-        background-color: #FFCC00; /* Amarelo Stefanini */
-        color: #000000; /* Texto Preto */
-        border: 2px solid #000000; /* Circunferência/Borda Preta */
+        background-color: #FFCC00 !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        border-radius: 8px;
         font-weight: bold;
     }
-    div.stButton > button:first-child:hover {
-        background-color: #003366; /* Azul ao passar o mouse */
-        color: #FFFFFF;
+    
+    /* 2. Abas: Letras em Azul Escuro e Marca-texto em Amarelo */
+    button[data-baseweb="tab"] {
+        color: #003366 !important; /* Azul Escuro Stefanini */
     }
-    /* Cor dos cabeçalhos da tabela em Preto */
+    div[data-baseweb="tab-highlight"] {
+        background-color: #FFCC00 !important; /* Amarelo no lugar do rosa */
+    }
+
+    /* 3. Tabela: Cabeçalho em Preto e Texto em Azul Escuro */
     thead tr th {
         background-color: #000000 !important;
         color: white !important;
+    }
+    tbody {
+        color: #003366 !important;
+    }
+
+    /* 4. Título e Subtítulos em Azul Escuro */
+    h1, h2, h3, h4 {
+        color: #003366 !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -29,7 +44,7 @@ st.title(" Portal de Governança e Auditoria DTI-PF")
 # Texto de Contexto Refinado
 st.markdown("""
 <div style="background-color: #f0f2f6; padding: 15px; border-radius: 10px; border-left: 5px solid #003366;">
-    <h4 style="margin-top: 0; color: #003366;">📋 Sobre este Portal</h4>
+    <h4 style="margin-top: 0; color: #003366;"> Sobre este Portal</h4>
     <p style="font-size: 14px; color: #000000;">
         Esta ferramenta automatiza a validação do <b>Definition of Done (DoD)</b> entre as equipes de Infraestrutura e Fábrica de Software.
     </p>
