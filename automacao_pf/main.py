@@ -11,13 +11,13 @@ def validar_entrega_fabrica(issue_id):
     script = status['script_banco_executado']
     doc = status['doc_homologacao_anexado']
     
-    # 2. Lógica de Decisão (O coração da automação)
+    # 2. Lógica de Decisão 
     
     # CASO A: TUDO PRONTO (Sucesso para a Área Gestora)
     if script and doc:
         return "✅ Pronto para Homologação! Notificando Área Gestora."
     
-    # CASO B: NADA PRONTO (Pendência Geral / Início de Sprint)
+    # CASO B: NADA PRONTO (Pendência Geral ou Início de Sprint)
     elif not script and not doc:
         return f"⚪ Pendência Geral: {issue_id} aguarda definições de Infra e Fábrica."
     
