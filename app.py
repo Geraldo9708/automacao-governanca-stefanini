@@ -16,13 +16,14 @@ st.markdown("""
         font-weight: bold;
     }
     
-    /* 2. Campo de Entrada (ID da Demanda): Contorno Amarelo ao clicar */
-    div[data-baseweb="input"] > div {
+    /* 2. Inputs e Selectbox: Contorno Amarelo ao clicar (Remove o Rosa) */
+    div[data-baseweb="input"] > div, div[data-baseweb="select"] > div {
         border-color: #003366 !important; /* Borda padrão azul */
     }
-    div[data-baseweb="input"]:focus-within {
+    
+    div[data-baseweb="input"]:focus-within, div[data-baseweb="select"]:focus-within {
         border-color: #FFCC00 !important; /* Borda amarela ao clicar */
-        box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.25) !important; /* Brilho amarelo */
+        box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.25) !important;
     }
 
     /* 3. Abas: Letras em Azul Escuro e Marca-texto em Amarelo */
@@ -42,10 +43,9 @@ st.markdown("""
         color: #003366 !important;
     }
     
-    /* Remove o contorno rosa padrão do Streamlit em todos os inputs */
-    input:focus {
+    /* Garantia global contra o contorno rosa */
+    .stSelectbox:focus-within, .stTextInput:focus-within {
         border-color: #FFCC00 !important;
-        box-shadow: none !important;
     }
     </style>
     """, unsafe_allow_html=True)
