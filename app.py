@@ -3,7 +3,7 @@ import pandas as pd # pip install pandas (se necessário)
 from automacao_pf.main import validar_entrega_fabrica
 from automacao_pf.db_handler import buscar_relatorio_geral
 
-st.set_page_config(page_title="Gestão DTI-PF", page_icon="🛡️", layout="wide")
+st.set_page_config(page_title="Gestão DTI-PF", page_icon="🎯", layout="wide")
 
 st.markdown("""
     <style>
@@ -16,30 +16,39 @@ st.markdown("""
         font-weight: bold;
     }
     
-    /* 2. Abas: Letras em Azul Escuro e Marca-texto em Amarelo */
-    button[data-baseweb="tab"] {
-        color: #003366 !important; /* Azul Escuro Stefanini */
+    /* 2. Campo de Entrada (ID da Demanda): Contorno Amarelo ao clicar */
+    div[data-baseweb="input"] > div {
+        border-color: #003366 !important; /* Borda padrão azul */
     }
-    div[data-baseweb="tab-highlight"] {
-        background-color: #FFCC00 !important; /* Amarelo no lugar do rosa */
+    div[data-baseweb="input"]:focus-within {
+        border-color: #FFCC00 !important; /* Borda amarela ao clicar */
+        box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.25) !important; /* Brilho amarelo */
     }
 
-    /* 3. Tabela: Cabeçalho em Preto e Texto em Azul Escuro */
+    /* 3. Abas: Letras em Azul Escuro e Marca-texto em Amarelo */
+    button[data-baseweb="tab"] {
+        color: #003366 !important;
+    }
+    div[data-baseweb="tab-highlight"] {
+        background-color: #FFCC00 !important;
+    }
+
+    /* 4. Tabela e Títulos */
     thead tr th {
         background-color: #000000 !important;
         color: white !important;
     }
-    tbody {
-        color: #003366 !important;
-    }
-
-    /* 4. Título e Subtítulos em Azul Escuro */
     h1, h2, h3, h4 {
         color: #003366 !important;
     }
+    
+    /* Remove o contorno rosa padrão do Streamlit em todos os inputs */
+    input:focus {
+        border-color: #FFCC00 !important;
+        box-shadow: none !important;
+    }
     </style>
     """, unsafe_allow_html=True)
-
 st.title(" Portal de Governança e Auditoria DTI-PF")
 # Texto de Contexto Refinado
 st.markdown("""
@@ -80,7 +89,7 @@ with aba2:
         # 1. Cria o DataFrame
         df = pd.DataFrame(res.data)
         
-        # 2. Renomeia as colunas (Ajuste para bater com as colunas do seu banco)
+        # 2. Renomeia as colunas (Ajuste para bater com as colunas do banco)
         # O banco retorna: id, issue_jira, script_banco_executado, doc_homologacao_anexado, data_validacao
         df.columns = ['ID', 'Ticket Jira', 'Banco OK', 'Doc OK', 'Data Atualização']
         
@@ -88,7 +97,7 @@ with aba2:
         df['Data Atualização'] = pd.to_datetime(df['Data Atualização'])
         df = df.sort_values(by='Data Atualização', ascending=False)
         
-        # 4. Exibe a tabela com formatação limpa (mostra apenas data e hora, sem microsegundos)
+        # 4. Exibe a tabela com formatação limpa 
         st.dataframe(df.style.format({"Data Atualização": lambda t: t.strftime('%d/%m/%Y %H:%M')}), use_container_width=True)
     else:
         st.warning("Nenhuma atualização encontrada neste período.")
