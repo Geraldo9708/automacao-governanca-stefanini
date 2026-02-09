@@ -5,18 +5,21 @@ from automacao_pf.db_handler import buscar_relatorio_geral
 
 st.set_page_config(page_title="Gestão DTI-PF", page_icon="🛡️", layout="wide")
 
-st.title("🛡️ Portal de Governança e Auditoria DTI-PF")
-# Texto de Contexto para o Gestor
+st.title(" Portal de Governança e Auditoria DTI-PF")
+# Texto de Contexto Refinado
 st.markdown("""
-### 📋 Sobre este Portal
-Esta ferramenta automatiza a validação do **Definition of Done (DoD)** entre as equipes de Infraestrutura e Fábrica de Software. 
-Ela garante que nenhuma demanda avance para homologação sem os devidos artefatos técnicos.
-
-⚠️ **Dados para Teste**: 
-Para fins de demonstração, utilize os IDs de **PF-1025 a PF-1029** no campo abaixo. 
-Cada ID simula um cenário real de governança (Sucesso, Bloqueio por Infra ou Pendência de Documentação).
----
-""")
+<div style="background-color: #f0f2f6; padding: 15px; border-radius: 10px; border-left: 5px solid #ff4b4b;">
+    <h4 style="margin-top: 0;"> Sobre este Portal</h4>
+    <p style="font-size: 14px; color: #31333F;">
+        Esta ferramenta automatiza a validação do <b>Definition of Done (DoD)</b> entre as equipes de Infraestrutura e Fábrica de Software. 
+        Garante que nenhuma demanda avance para homologação sem os devidos artefatos técnicos.
+    </p>
+    <p style="font-size: 14px; font-weight: bold; color: #ff4b4b; margin-bottom: 0;">
+        ⚠️ Dados para Teste: Utilize os IDs de PF-1025 a PF-1029 para simular cenários reais de governança.
+    </p>
+</div>
+<br>
+""", unsafe_allow_html=True)
 
 # Abas para organizar a visão do Gestor
 aba1, aba2 = st.tabs(["🔍 Consulta Individual", "📊 Relatório Geral (Gestão)"])
