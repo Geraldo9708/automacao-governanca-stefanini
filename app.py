@@ -5,17 +5,36 @@ from automacao_pf.db_handler import buscar_relatorio_geral
 
 st.set_page_config(page_title="Gestão DTI-PF", page_icon="🛡️", layout="wide")
 
+st.markdown("""
+    <style>
+    div.stButton > button:first-child {
+        background-color: #FFCC00; /* Amarelo Stefanini */
+        color: #000000; /* Texto Preto */
+        border: 2px solid #000000; /* Circunferência/Borda Preta */
+        font-weight: bold;
+    }
+    div.stButton > button:first-child:hover {
+        background-color: #003366; /* Azul ao passar o mouse */
+        color: #FFFFFF;
+    }
+    /* Cor dos cabeçalhos da tabela em Preto */
+    thead tr th {
+        background-color: #000000 !important;
+        color: white !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 st.title(" Portal de Governança e Auditoria DTI-PF")
 # Texto de Contexto Refinado
 st.markdown("""
-<div style="background-color: #f0f2f6; padding: 15px; border-radius: 10px; border-left: 5px solid #ff4b4b;">
-    <h4 style="margin-top: 0;"> Sobre este Portal</h4>
-    <p style="font-size: 14px; color: #31333F;">
-        Esta ferramenta automatiza a validação do <b>Definition of Done (DoD)</b> entre as equipes de Infraestrutura e Fábrica de Software. 
-        Garante que nenhuma demanda avance para homologação sem os devidos artefatos técnicos.
+<div style="background-color: #f0f2f6; padding: 15px; border-radius: 10px; border-left: 5px solid #003366;">
+    <h4 style="margin-top: 0; color: #003366;">📋 Sobre este Portal</h4>
+    <p style="font-size: 14px; color: #000000;">
+        Esta ferramenta automatiza a validação do <b>Definition of Done (DoD)</b> entre as equipes de Infraestrutura e Fábrica de Software.
     </p>
-    <p style="font-size: 14px; font-weight: bold; color: #ff4b4b; margin-bottom: 0;">
-        ⚠️ Dados para Teste: Utilize os IDs de PF-1025 a PF-1029 para simular cenários reais de governança.
+    <p style="font-size: 14px; font-weight: bold; color: #003366; margin-bottom: 0;">
+        ⚠️ Dados para Teste: Utilize os IDs de PF-1025 a PF-1029.
     </p>
 </div>
 <br>
